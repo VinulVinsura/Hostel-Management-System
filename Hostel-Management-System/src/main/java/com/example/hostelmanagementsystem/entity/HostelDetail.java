@@ -2,12 +2,14 @@ package com.example.hostelmanagementsystem.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -29,8 +31,8 @@ public class HostelDetail {
     private List<User> users;
 
 
-    //user find by ID
-    public HostelDetail(Long id) {
-        this.id = id;
-    }
+//    //user find by ID
+//    public HostelDetail(Long id) {
+//        this.id = id;
+//    }
 }

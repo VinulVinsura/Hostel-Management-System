@@ -1,5 +1,6 @@
 package com.example.hostelmanagementsystem.service.impl;
 
+import com.example.hostelmanagementsystem.dto.ResponseDto;
 import com.example.hostelmanagementsystem.dto.UserDto;
 import com.example.hostelmanagementsystem.entity.HostelDetail;
 import com.example.hostelmanagementsystem.entity.User;
@@ -10,6 +11,11 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.UnexpectedRollbackException;
+
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
@@ -17,30 +23,36 @@ import org.springframework.stereotype.Service;
 public class UserManageServiceImpl implements UserManageService {
     private final UserRepo userRepo;
     private final ModelMapper modelMapper;
-    private final HostelDetailsRepo hostelDetailsRepo;
+    private final HostelDetailsRepo hostelRepo;
+
     @Override
-    public UserDto saveUser(UserDto userDto) {
+    public ResponseDto saveUser(UserDto userDto) {
+
+        try {
+            User user = User.builder()
+                    .firstName(userDto.getFirstName())
+                    .lastName(userDto.getLastName())
+                    .gender(userDto.getGender())
+                    .email(userDto.getEmail())
+                    .password(userDto.getPassword())
+                    .userRole(userDto.getUserRole())
+                    .studentId(userDto.getStudentId())
+                    .contact_number(userDto.getContact_number())
+                    .address(userDto.getAddress())
+                    .enroll_date(userDto.getEnroll_date())
+                    .faculty_name(userDto.getFaculty_name())
+                    .hostel_detail(HostelDetail.builder().id(userDto.getHostel_id()).build())
+                    .build();
+            User saveUser=userRepo.save(user);
+            return new ResponseDto(00,saveUser);
 
 
-        HostelDetail hostelDetail = new HostelDetail(userDto.getHostel_id());
+        }catch (Exception ex ){
+            return new ResponseDto(02,"Error");
+        }
 
 
-        User user= new User(null,
-                userDto.getFirstName(),
-                userDto.getLastName(),
-                userDto.getGender(),
-                userDto.getEmail(),
-                userDto.getPassword(),
-                userDto.getUserRole(),
-                userDto.getStudentId(),
-                userDto.getContact_number(),
-                userDto.getAddress(),
-                userDto.getEnroll_date(),
-                userDto.getFaculty_name(),
-                hostelDetail
-                );
-          User user1=userRepo.save(user);
-          return modelMapper.map(user1, UserDto.class);
+
 
     }
 }

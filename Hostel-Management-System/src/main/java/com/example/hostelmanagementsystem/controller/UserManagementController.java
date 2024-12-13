@@ -1,11 +1,13 @@
 package com.example.hostelmanagementsystem.controller;
 
+import com.example.hostelmanagementsystem.dto.ResponseDto;
 import com.example.hostelmanagementsystem.dto.UserDto;
 import com.example.hostelmanagementsystem.service.UserManageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,10 +20,13 @@ public class UserManagementController {
     private  UserManageService userManageService;
 
     @PostMapping("/save-user")
-    public ResponseEntity<UserDto> saveUser(@RequestBody UserDto userDto){
-        log.info("1");
-        System.out.println("1");
-        return ResponseEntity.ok(userManageService.saveUser(userDto));
+    public ResponseEntity<ResponseDto> saveUser(@RequestBody UserDto userDto){
+        try {
+            return ResponseEntity.ok(userManageService.saveUser(userDto));
+        }catch (UnexpectedRollbackException ex){
+            return ResponseEntity.ok(new ResponseDto(02,ex.getMessage()));
+        }
+
 
     }
 }
