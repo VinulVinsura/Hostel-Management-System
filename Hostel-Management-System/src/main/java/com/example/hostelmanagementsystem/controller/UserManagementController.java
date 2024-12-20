@@ -24,6 +24,7 @@ public class UserManagementController {
         try {
             return ResponseEntity.ok(userManageService.saveUser(userDto));
         }catch (UnexpectedRollbackException ex){
+            log.error("Error");
             return ResponseEntity.ok(new ResponseDto(02,ex.getMessage()));
         }
 
