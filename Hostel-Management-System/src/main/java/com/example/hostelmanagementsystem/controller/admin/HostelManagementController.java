@@ -1,4 +1,4 @@
-package com.example.hostelmanagementsystem.controller;
+package com.example.hostelmanagementsystem.controller.admin;
 
 import com.example.hostelmanagementsystem.dto.HostelDetailDto;
 import com.example.hostelmanagementsystem.dto.ResponseDto;
