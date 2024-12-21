@@ -1,6 +1,6 @@
 package com.example.hostelmanagementsystem.config;
 
-import com.example.hostelmanagementsystem.service.AuthenticationService;
+import com.example.hostelmanagementsystem.service.security_service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors->cors.configurationSource(corsConfigurationSource())) //Add Cors Configuration
                 .authorizeHttpRequests(
-                        req->req.requestMatchers("/api/user/save-user/**","/api/student/login/**")
+                        req->req.requestMatchers("/api/student/save-prospective-student/**","/api/student/login/**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()

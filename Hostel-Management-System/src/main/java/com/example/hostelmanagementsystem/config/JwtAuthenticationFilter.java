@@ -1,8 +1,8 @@
 package com.example.hostelmanagementsystem.config;
 
 import com.example.hostelmanagementsystem.dto.ResponseDto;
-import com.example.hostelmanagementsystem.service.AuthenticationService;
-import com.example.hostelmanagementsystem.service.JwtService;
+import com.example.hostelmanagementsystem.service.security_service.AuthenticationService;
+import com.example.hostelmanagementsystem.service.security_service.JwtService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.Nullable;
 import jakarta.servlet.FilterChain;
@@ -34,11 +34,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader("Authorization");
 
+
         if (authHeader ==null || !authHeader.startsWith("Bearer ")){
-            if(request.getServletPath().equals("/api/user/save-user") || request.getServletPath().equals("/api/student/login")){
+
+            //        request.getServletPath().equals("/api/user/save-user")
+            if(request.getServletPath().equals("/api/student/login")|| request.getServletPath().equals("/api/student/save-prospective-student")){
                 filterChain.doFilter(request,response);
                 return;
             }
+
+
             ResponseDto responseDto=new ResponseDto(3,"Not Authorized");
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             response.setContentType("application/json");

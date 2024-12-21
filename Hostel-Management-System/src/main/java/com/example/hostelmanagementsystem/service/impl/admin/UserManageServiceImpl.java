@@ -6,7 +6,7 @@ import com.example.hostelmanagementsystem.entity.HostelDetail;
 import com.example.hostelmanagementsystem.entity.User;
 import com.example.hostelmanagementsystem.repository.HostelDetailsRepo;
 import com.example.hostelmanagementsystem.repository.UserRepo;
-import com.example.hostelmanagementsystem.service.JwtService;
+import com.example.hostelmanagementsystem.service.security_service.JwtService;
 import com.example.hostelmanagementsystem.service.UserManageService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.UnexpectedRollbackException;
-
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.Optional;
 
 
 @Service
@@ -51,8 +47,7 @@ public class UserManageServiceImpl implements UserManageService {
                     .hostel_detail(HostelDetail.builder().id(userDto.getHostel_id()).build())
                     .build();
             User saveUser=userRepo.save(user);
-            String toke = jwtService.generateToke(saveUser);
-            return new ResponseDto(00,toke);
+            return new ResponseDto(00,saveUser);
 
 
         }catch (Exception ex ){

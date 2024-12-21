@@ -1,6 +1,6 @@
-package com.example.hostelmanagementsystem.service;
+package com.example.hostelmanagementsystem.service.security_service;
 
-import com.example.hostelmanagementsystem.entity.User;
+import com.example.hostelmanagementsystem.entity.ProspectiveStudent;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -17,14 +17,14 @@ public class JwtService {
 
     private final String SECRET_KEY="426f4cbeea18d5d5860b6809c087bf8be40c175f380cbcfde7ff77617df591c7";
 
-    public String generateToke(User user){
+    public String generateToke(ProspectiveStudent prospectiveStudent){
         String token= Jwts.
                 builder()
-                .subject(user.getUsername())
-                .claim("id",user.getId())
-                .claim("firstName",user.getFirstName())
-                .claim("LastName",user.getLastName())
-                .claim("Role",user.getUserRole())
+                .subject(prospectiveStudent.getUsername())
+                .claim("id",prospectiveStudent.getId())
+                .claim("firstName",prospectiveStudent.getFirstName())
+                .claim("LastName",prospectiveStudent.getLastName())
+                .claim("Role",prospectiveStudent.getUserRole())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 60*60*24*1000))
                 .signWith(getSignKey())

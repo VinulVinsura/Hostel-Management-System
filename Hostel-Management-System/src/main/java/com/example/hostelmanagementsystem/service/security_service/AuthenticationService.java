@@ -1,6 +1,6 @@
-package com.example.hostelmanagementsystem.service;
+package com.example.hostelmanagementsystem.service.security_service;
 
-import com.example.hostelmanagementsystem.repository.UserRepo;
+import com.example.hostelmanagementsystem.repository.ProspectiveStudentRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticationService implements UserDetailsService {
 
-    private final UserRepo userRepo;
+    private final ProspectiveStudentRepo prospectiveStudentRepo;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepo.findByEmail(username)
+        return prospectiveStudentRepo.findByEmail(username)
                 .orElseThrow(()->new UsernameNotFoundException("User Not Found"));
     }
 }
