@@ -18,8 +18,8 @@ public class StudentServiceImpl implements StudentService {
     private final StudentRepo studentRepo;
     @Override
     public ResponseDto login(LoginDto loginDto) {
-        log.info(loginDto.getEmail());
-        Optional<Student> student = studentRepo.findByEmailAndStudentNum(loginDto.getEmail(), loginDto.getStudent_num());
+
+        Optional<Student> student = studentRepo.findByEmailAndStudentNum(loginDto.getEmail(), loginDto.getPassword());
         if (student.isEmpty()){
             return new ResponseDto(01,"Invalid Credential");
         }else {

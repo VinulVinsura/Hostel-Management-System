@@ -14,7 +14,6 @@ public class AuthenticationService implements UserDetailsService {
     private final ProspectiveStudentRepo prospectiveStudentRepo;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return prospectiveStudentRepo.findByEmail(username)
-                .orElseThrow(()->new UsernameNotFoundException("User Not Found"));
+        return prospectiveStudentRepo.findByEmail(username);
     }
 }
