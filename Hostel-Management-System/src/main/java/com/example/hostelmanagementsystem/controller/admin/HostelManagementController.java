@@ -5,10 +5,7 @@ import com.example.hostelmanagementsystem.dto.ResponseDto;
 import com.example.hostelmanagementsystem.service.HostelManageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/hostel")
@@ -19,5 +16,9 @@ public class HostelManagementController {
     @PostMapping("/add-hostel")
     public ResponseEntity<ResponseDto> addHostel(@RequestBody HostelDetailDto hostelDetailDto){
         return ResponseEntity.ok(hostelService.addHostel(hostelDetailDto));
+    }
+    @GetMapping("/get-all-hostal")
+    public ResponseEntity<ResponseDto> getAllHostel(){
+        return ResponseEntity.ok(hostelService.getAllHostel());
     }
 }

@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -21,9 +23,26 @@ public class HostelManageServiceImpl implements HostelManageService {
     @Override
     public ResponseDto addHostel(HostelDetailDto hostelDetailDto) {
 
-           HostelDetail hostelDetail=hostelRepo.save(modelMapper.map(hostelDetailDto, HostelDetail.class));
-           return new ResponseDto(00,hostelDetail);
+        try {
+            HostelDetail hostelDetail=hostelRepo.save(modelMapper.map(hostelDetailDto, HostelDetail.class));
+            return new ResponseDto(00,hostelDetail);
+        }catch (Exception ex){
+            return new ResponseDto(02,ex.getMessage());
+        }
 
 
+
+    }
+
+    @Override
+    public ResponseDto getAllHostel() {
+
+        try {
+            List<HostelDetail> hostelDetailList = hostelRepo.findAll();
+            return new ResponseDto(00,hostelDetailList);
+
+        }catch (Exception ex){
+            return new ResponseDto(02,ex.getMessage());
+        }
     }
 }

@@ -47,7 +47,6 @@ public class ProspectiveStudentServiceImpl implements ProspectiveStudentService 
                     .faculty_name(dto.getFaculty_name())
                     .address(dto.getAddress()).build();
             ProspectiveStudent p_student = prospectiveStudentRepo.save(prospectiveStudent);
-            String token = jwtService.generateToke(p_student);
 
             if(p_student!=null){
                 return new ResponseDto(00,"Prospective Student Save Success..");
