@@ -1,7 +1,8 @@
 package com.example.hostelmanagementsystem.service.impl.admin;
 
 import com.example.hostelmanagementsystem.dto.HostelDetailDto;
-import com.example.hostelmanagementsystem.dto.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseHostelDto;
 import com.example.hostelmanagementsystem.entity.HostelDetail;
 import com.example.hostelmanagementsystem.repository.HostelDetailsRepo;
 import com.example.hostelmanagementsystem.service.HostelManageService;
@@ -9,6 +10,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,7 +41,9 @@ public class HostelManageServiceImpl implements HostelManageService {
 
         try {
             List<HostelDetail> hostelDetailList = hostelRepo.findAll();
-            return new ResponseDto(00,hostelDetailList);
+            List<ResponseHostelDto> responseHostelDtoList=modelMapper.map(hostelDetailList,
+                    new TypeToken<List<ResponseHostelDto>>(){}.getType());
+            return new ResponseDto(00,responseHostelDtoList);
 
         }catch (Exception ex){
             return new ResponseDto(02,ex.getMessage());

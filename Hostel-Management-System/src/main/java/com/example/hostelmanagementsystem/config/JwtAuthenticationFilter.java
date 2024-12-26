@@ -1,6 +1,6 @@
 package com.example.hostelmanagementsystem.config;
 
-import com.example.hostelmanagementsystem.dto.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
 import com.example.hostelmanagementsystem.service.security_service.AuthenticationService;
 import com.example.hostelmanagementsystem.service.security_service.JwtService;
 import com.fasterxml.jackson.databind.ObjectMapper;

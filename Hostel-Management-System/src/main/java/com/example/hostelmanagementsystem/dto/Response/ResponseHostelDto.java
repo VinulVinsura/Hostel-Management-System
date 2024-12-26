@@ -1,17 +1,15 @@
-package com.example.hostelmanagementsystem.dto;
+package com.example.hostelmanagementsystem.dto.Response;
 
-import com.example.hostelmanagementsystem.dto.Response.ResponseUserDto;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class HostelDetailDto {
+public class ResponseHostelDto {
     private Long id;
     private String hostel_name;
     private String location;
@@ -20,6 +18,5 @@ public class HostelDetailDto {
     private int total_capacity;
     private int filled_capacity;
     private int available_capacity;
-
-
+    private List<ResponseUserDto> users;
 }

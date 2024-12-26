@@ -1,7 +1,7 @@
 package com.example.hostelmanagementsystem.controller;
 
 import com.example.hostelmanagementsystem.dto.LoginDto;
-import com.example.hostelmanagementsystem.dto.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
 import com.example.hostelmanagementsystem.service.ProspectiveStudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

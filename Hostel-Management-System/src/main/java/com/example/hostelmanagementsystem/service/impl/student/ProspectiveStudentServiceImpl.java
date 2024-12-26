@@ -2,7 +2,7 @@ package com.example.hostelmanagementsystem.service.impl.student;
 
 import com.example.hostelmanagementsystem.dto.LoginDto;
 import com.example.hostelmanagementsystem.dto.ProspectiveStudentDto;
-import com.example.hostelmanagementsystem.dto.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
 import com.example.hostelmanagementsystem.entity.ProspectiveStudent;
 import com.example.hostelmanagementsystem.repository.ProspectiveStudentRepo;
 import com.example.hostelmanagementsystem.service.ProspectiveStudentService;
@@ -13,12 +13,10 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -68,13 +66,11 @@ public class ProspectiveStudentServiceImpl implements ProspectiveStudentService 
             if(prospectiveStudentList.isEmpty()){
                 return new ResponseDto(01,"Prospective Student Is Empty");
             }
-            return new ResponseDto(00,modelMapper.map(prospectiveStudentList,new TypeToken<List<ProspectiveStudentDto>>(){}.getType()));
+            return new ResponseDto(00,modelMapper.map(prospectiveStudentList, new TypeToken<List<ProspectiveStudentDto>>(){}.getType()));
 
         }catch (Exception ex){
             return new ResponseDto(03,ex.getMessage());
         }
-
-
     }
 
     @Override

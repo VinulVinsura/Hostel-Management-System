@@ -1,7 +1,7 @@
 package com.example.hostelmanagementsystem.service.impl.student;
 
 import com.example.hostelmanagementsystem.dto.LoginDto;
-import com.example.hostelmanagementsystem.dto.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
 import com.example.hostelmanagementsystem.entity.Student;
 import com.example.hostelmanagementsystem.repository.StudentRepo;
 import com.example.hostelmanagementsystem.service.StudentService;

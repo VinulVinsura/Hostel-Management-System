@@ -2,7 +2,7 @@ package com.example.hostelmanagementsystem.controller.student;
 
 import com.example.hostelmanagementsystem.dto.LoginDto;
 import com.example.hostelmanagementsystem.dto.ProspectiveStudentDto;
-import com.example.hostelmanagementsystem.dto.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
 import com.example.hostelmanagementsystem.service.ProspectiveStudentService;
 import com.example.hostelmanagementsystem.service.StudentService;
 import lombok.RequiredArgsConstructor;

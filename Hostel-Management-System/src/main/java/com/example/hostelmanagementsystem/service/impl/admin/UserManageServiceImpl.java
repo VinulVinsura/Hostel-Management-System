@@ -1,6 +1,7 @@
 package com.example.hostelmanagementsystem.service.impl.admin;
 
-import com.example.hostelmanagementsystem.dto.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseEligibleStudentDto;
 import com.example.hostelmanagementsystem.dto.UserDto;
 import com.example.hostelmanagementsystem.entity.HostelDetail;
 import com.example.hostelmanagementsystem.entity.User;
@@ -12,8 +13,11 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -57,5 +61,18 @@ public class UserManageServiceImpl implements UserManageService {
 
 
 
+    }
+
+    @Override
+    public ResponseDto getEligibleStudents() {
+        try {
+            List<User> eligibleStudentList = userRepo.findAll();
+            List<ResponseEligibleStudentDto> responseEligibleStudentDto=modelMapper.map(eligibleStudentList,
+                    new TypeToken<List<ResponseEligibleStudentDto>>(){}.getType());
+            return new ResponseDto(00,responseEligibleStudentDto);
+
+        }catch (Exception ex){
+            return new ResponseDto(02,ex.getMessage());
+        }
     }
 }

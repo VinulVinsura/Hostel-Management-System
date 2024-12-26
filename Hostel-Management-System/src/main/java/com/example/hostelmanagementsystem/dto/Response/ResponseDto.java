@@ -1,4 +1,4 @@
-package com.example.hostelmanagementsystem.dto;
+package com.example.hostelmanagementsystem.dto.Response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

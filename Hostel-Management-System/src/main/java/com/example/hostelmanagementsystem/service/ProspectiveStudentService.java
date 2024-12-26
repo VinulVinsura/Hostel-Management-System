@@ -2,7 +2,7 @@ package com.example.hostelmanagementsystem.service;
 
 import com.example.hostelmanagementsystem.dto.LoginDto;
 import com.example.hostelmanagementsystem.dto.ProspectiveStudentDto;
-import com.example.hostelmanagementsystem.dto.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
 
 public interface ProspectiveStudentService {
     ResponseDto saveProspectiveStudent(ProspectiveStudentDto dto);

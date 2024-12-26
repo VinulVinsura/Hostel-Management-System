@@ -29,7 +29,7 @@ public class HostelDetail {
     private int available_capacity;
 
     @OneToMany(mappedBy = "hostel_detail")
-    @JsonIgnore
+//    @JsonIgnore
     private List<User> users;
 
 

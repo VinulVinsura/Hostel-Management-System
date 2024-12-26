@@ -1,7 +1,7 @@
 package com.example.hostelmanagementsystem.controller.admin;
 
 import com.example.hostelmanagementsystem.dto.HostelDetailDto;
-import com.example.hostelmanagementsystem.dto.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
 import com.example.hostelmanagementsystem.service.HostelManageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
