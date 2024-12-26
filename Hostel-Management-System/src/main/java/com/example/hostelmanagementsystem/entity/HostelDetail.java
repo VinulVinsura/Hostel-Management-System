@@ -1,5 +1,6 @@
 package com.example.hostelmanagementsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,7 @@ public class HostelDetail {
     private int available_capacity;
 
     @OneToMany(mappedBy = "hostel_detail")
+//    @JsonIgnore
     private List<User> users;
 
 

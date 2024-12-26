@@ -1,8 +1,10 @@
 package com.example.hostelmanagementsystem.service;
 
 import com.example.hostelmanagementsystem.dto.HostelDetailDto;
-import com.example.hostelmanagementsystem.dto.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
+import com.example.hostelmanagementsystem.dto.Response.ResponseHostelDto;
 
 public interface HostelManageService {
-    public ResponseDto addHostel(HostelDetailDto hostelDetailDto);
+    ResponseDto addHostel(HostelDetailDto hostelDetailDto);
+    ResponseDto getAllHostel();
 }
