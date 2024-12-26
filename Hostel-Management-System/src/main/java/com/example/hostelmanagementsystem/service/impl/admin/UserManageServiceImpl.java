@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -41,7 +42,7 @@ public class UserManageServiceImpl implements UserManageService {
                     .lastName(userDto.getLastName())
                     .gender(userDto.getGender())
                     .email(userDto.getEmail())
-                    .password(passwordEncoder.encode(userDto.getPassword()))
+                    .password(userDto.getPassword())
                     .userRole(userDto.getUserRole())
                     .studentId(userDto.getStudentId())
                     .contact_number(userDto.getContact_number())
@@ -71,6 +72,17 @@ public class UserManageServiceImpl implements UserManageService {
                     new TypeToken<List<ResponseEligibleStudentDto>>(){}.getType());
             return new ResponseDto(00,responseEligibleStudentDto);
 
+        }catch (Exception ex){
+            return new ResponseDto(02,ex.getMessage());
+        }
+    }
+
+    @Override
+    public ResponseDto getEligibleStudentByEmail(String email) {
+        try {
+            Optional<User> student = userRepo.findByEmail(email);
+            return new ResponseDto(00,modelMapper.map(student,
+                    ResponseEligibleStudentDto.class));
         }catch (Exception ex){
             return new ResponseDto(02,ex.getMessage());
         }

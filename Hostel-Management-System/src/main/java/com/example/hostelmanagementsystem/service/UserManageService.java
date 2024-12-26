@@ -7,4 +7,5 @@ public interface UserManageService {
 
     ResponseDto saveUser(UserDto userDto);
     ResponseDto getEligibleStudents();
+    ResponseDto getEligibleStudentByEmail(String email);
 }
