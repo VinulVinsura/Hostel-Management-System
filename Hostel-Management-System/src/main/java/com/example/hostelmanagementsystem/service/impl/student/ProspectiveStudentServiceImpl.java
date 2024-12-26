@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -97,5 +98,21 @@ public class ProspectiveStudentServiceImpl implements ProspectiveStudentService 
         ProspectiveStudent prospectiveStudent = prospectiveStudentRepo.findByEmail(loginDto.getEmail());
         String toke = jwtService.generateToke(prospectiveStudent);
         return new ResponseDto(00,toke);
+    }
+
+    @Override
+    public ResponseDto getStudentById(Long id) {
+        try {
+            if(prospectiveStudentRepo.existsById(id)){
+                Optional<ProspectiveStudent> prospectiveStudent = prospectiveStudentRepo.findById(id);
+                return new ResponseDto(00,
+                        modelMapper.map(prospectiveStudent, ProspectiveStudentDto.class));
+            }else {
+                return new ResponseDto(00,"Can't find this user..");
+            }
+        }catch (Exception ex){
+            return new ResponseDto(02,ex.getMessage());
+        }
+
     }
 }

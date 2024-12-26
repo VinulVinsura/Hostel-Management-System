@@ -8,4 +8,5 @@ public interface ProspectiveStudentService {
     ResponseDto saveProspectiveStudent(ProspectiveStudentDto dto);
     ResponseDto getAllProspectiveStudent();
     ResponseDto login(LoginDto loginDto);
+    ResponseDto getStudentById(Long id);
 }
