@@ -1,5 +1,6 @@
 package com.example.hostelmanagementsystem.dto.Response;
 
+import com.example.hostelmanagementsystem.dto.RoomDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +20,5 @@ public class ResponseHostelDto {
     private int filled_capacity;
     private int available_capacity;
     private List<ResponseUserDto> users;
+    private List<RoomDto> rooms;
 }
