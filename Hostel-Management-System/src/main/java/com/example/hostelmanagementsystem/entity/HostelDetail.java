@@ -32,6 +32,9 @@ public class HostelDetail {
 //    @JsonIgnore
     private List<User> users;
 
+    @OneToMany(mappedBy = "hostelDetail")
+    private List<Room> rooms;
+
 
 //    //user find by ID
 //    public HostelDetail(Long id) {
