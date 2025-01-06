@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 
 @Data
@@ -40,6 +41,9 @@ public class ProspectiveStudent implements UserDetails {
     private String address;
     private String status;
     private String faculty_name;
+    private BigDecimal monthly_income;
+    private String fatherName;
+    private String motherName;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
