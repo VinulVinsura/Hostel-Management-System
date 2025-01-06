@@ -7,4 +7,7 @@ public interface RoomManageService {
 
     ResponseDto addRoom(RoomDto roomDto);
     ResponseDto getAllRoom();
+    ResponseDto getRoomByRoomId(String roomId);
+
+    ResponseDto updateRoom(Long id, RoomDto roomDto);
 }

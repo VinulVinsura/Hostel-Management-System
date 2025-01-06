@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,4 +22,8 @@ public class ProspectiveStudentDto {
     private String address;
     private String status;
     private String faculty_name;
+    private BigDecimal monthly_income;
+    private String fatherName;
+    private String motherName;
+
 }

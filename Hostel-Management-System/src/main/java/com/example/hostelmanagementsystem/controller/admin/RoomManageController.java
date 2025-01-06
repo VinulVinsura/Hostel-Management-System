@@ -23,4 +23,14 @@ public class RoomManageController {
         return ResponseEntity.ok(manageService.getAllRoom());
 
     }
+    @GetMapping("/get-room-roomId/{roomId}")
+    public ResponseEntity<ResponseDto> getRoomByRoomId(@PathVariable String roomId){
+       return ResponseEntity.ok(manageService.getRoomByRoomId(roomId));
+    }
+
+    @PutMapping("/update-room/{id}")
+    public ResponseEntity<ResponseDto> updateRoom(@PathVariable Long id,
+                                                  @RequestBody RoomDto roomDto){
+        return ResponseEntity.ok(manageService.updateRoom(id,roomDto));
+    }
 }
