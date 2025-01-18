@@ -28,4 +28,14 @@ public class DamageController {
         return ResponseEntity.ok(damageService.addDamageCase(damageCaseDto));
     }
 
+    @GetMapping("/get-all-damage-master")
+    public ResponseEntity<ResponseDto> getAllDamageMaster(){
+        return ResponseEntity.ok(damageService.getAllDamageMaster());
+    }
+
+    @GetMapping("/get-all-damage-case")
+    public ResponseEntity<ResponseDto> getAllDamageCase(){
+        return ResponseEntity.ok(damageService.getAllDamageCase());
+    }
+
 }
