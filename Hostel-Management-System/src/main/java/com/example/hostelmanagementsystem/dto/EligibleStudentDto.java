@@ -1,32 +1,17 @@
-package com.example.hostelmanagementsystem.dto.Response;
+package com.example.hostelmanagementsystem.dto;
 
-import com.example.hostelmanagementsystem.dto.HostelDetailDto;
-import com.example.hostelmanagementsystem.dto.RoleDto;
 import com.example.hostelmanagementsystem.entity.DamageCase;
-import jakarta.persistence.Column;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseEligibleStudentDto {
-//    private Long id;
-//    private String firstName;
-//    private String lastName;
-//    private String gender;
-//    private String email;
-//    private String password;
-//    private RoleDto userRole;
-//    private String studentId;
-//    private Integer contact_number;
-//    private String address;
-//    private String enroll_date;
-//    private String faculty_name;
-//    private HostelDetailDto hostel_detail;
+public class EligibleStudentDto {
 
     private Long id;
     private String firstName;
@@ -53,6 +38,8 @@ public class ResponseEligibleStudentDto {
     private String guardianContactNumber;;
     private String facultyName;
     private Integer annualSalary;
+
     private String enrollDate;
-    private HostelDetailDto hostel_detail;
+    private Long hostel_id;
+
 }

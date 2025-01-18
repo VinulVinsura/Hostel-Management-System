@@ -51,7 +51,7 @@ public class DamageServiceImpl implements DamageService {
             List<DamageMaster> damageMasterList = damageMasterRepo.findAll();
             List<ResponseDamageMaster> responseDamageMasters=modelMapper.map(damageMasterList,
                     new TypeToken<List<ResponseDamageMaster>>(){}.getType());
-            return new ResponseDto(0,responseDamageMasters);
+            return new ResponseDto(0,damageMasterList);
         }catch (Exception ex){
             return new ResponseDto(2,ex.getMessage());
         }

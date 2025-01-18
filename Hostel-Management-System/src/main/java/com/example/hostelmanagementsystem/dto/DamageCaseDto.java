@@ -1,8 +1,11 @@
 package com.example.hostelmanagementsystem.dto;
 
+import com.example.hostelmanagementsystem.entity.EligibleStudent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,4 +17,5 @@ public class DamageCaseDto {
     private Double penalty_price;
     private String payment_status;
     private Long damageMasterId;
+    private List<EligibleStudent> eligibleStudents;
 }

@@ -1,9 +1,7 @@
 package com.example.hostelmanagementsystem.dto;
 
-import com.example.hostelmanagementsystem.dto.Response.ResponseUserDto;
-import lombok.*;
 
-import java.util.List;
+import lombok.*;
 
 
 @Getter
