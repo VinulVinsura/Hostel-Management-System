@@ -3,14 +3,12 @@ package com.example.hostelmanagementsystem.controller.student;
 import com.example.hostelmanagementsystem.dto.LoginDto;
 import com.example.hostelmanagementsystem.dto.ProspectiveStudentDto;
 import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
-import com.example.hostelmanagementsystem.repository.UserRepo;
 import com.example.hostelmanagementsystem.service.ProspectiveStudentService;
 import com.example.hostelmanagementsystem.service.StudentService;
-import com.example.hostelmanagementsystem.service.UserManageService;
+import com.example.hostelmanagementsystem.service.EligibleStudentManageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,7 +19,7 @@ public class StudentController {
 
     private final StudentService studentService;
     private final ProspectiveStudentService prospectiveStudentService;
-    private final UserManageService userManageService;
+    private final EligibleStudentManageService eligibleStudentManageService;
 
     @PostMapping("/save-prospective-student")
     public ResponseEntity<ResponseDto> saveProspectiveStudent(@RequestBody ProspectiveStudentDto prospectiveStudentDto){
@@ -42,7 +40,7 @@ public class StudentController {
 
     @GetMapping("/get-eligible-student/{email}")
     public ResponseEntity<ResponseDto> getEligibleStudentByEmail(@PathVariable String email){
-       return ResponseEntity.ok(userManageService.getEligibleStudentByEmail(email));
+       return ResponseEntity.ok(eligibleStudentManageService.getEligibleStudentByEmail(email));
     }
 
 }

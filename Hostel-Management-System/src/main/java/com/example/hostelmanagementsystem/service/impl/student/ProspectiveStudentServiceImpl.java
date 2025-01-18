@@ -36,15 +36,30 @@ public class ProspectiveStudentServiceImpl implements ProspectiveStudentService 
             ProspectiveStudent prospectiveStudent=ProspectiveStudent.builder()
                     .firstName(dto.getFirstName())
                     .lastName(dto.getLastName())
+                    .nameWithInitials(dto.getNameWithInitials())
+                    .nationalId(dto.getNationalId())
                     .gender(dto.getGender())
                     .email(dto.getEmail())
                     .password(passwordEncoder.encode(dto.getPassword()))
                     .userRole(dto.getUserRole())
                     .studentId(dto.getStudentId())
-                    .contact_number(dto.getContact_number())
+                    .contactNumber(dto.getContactNumber())
+                    .street(dto.getStreet())
+                    .village(dto.getVillage())
+                    .district(dto.getDistrict())
+                    .province(dto.getProvince())
+                    .postalCode(dto.getPostalCode())
+                    .distanceToHome(dto.getDistanceToHome())
+                    .mainIncome(dto.getMainIncome())
+                    .additionalIncome(dto.getAdditionalIncome())
+                    .numberFamilyMembers(dto.getNumberFamilyMembers())
+                    .numberOfSiblings(dto.getNumberOfSiblings())
+                    .numberOfSiblingsEdu(dto.getNumberOfSiblingsEdu())
+                    .nameOfGuardian(dto.getNameOfGuardian())
+                    .guardianContactNumber(dto.getGuardianContactNumber())
                     .status(dto.getStatus())
-                    .faculty_name(dto.getFaculty_name())
-                    .address(dto.getAddress()).build();
+                    .facultyName(dto.getFacultyName())
+                    .annualSalary(dto.getAnnualSalary()).build();
             ProspectiveStudent p_student = prospectiveStudentRepo.save(prospectiveStudent);
 
             if(p_student!=null){
