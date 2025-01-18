@@ -1,21 +1,18 @@
-package com.example.hostelmanagementsystem.dto;
+package com.example.hostelmanagementsystem.dto.Response;
 
-import com.example.hostelmanagementsystem.entity.EligibleStudent;
+import com.example.hostelmanagementsystem.dto.DamageMasterDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DamageCaseDto {
-
+public class ResponseDamageCase {
     private Long id;
     private Long hostelId;
     private Double penalty_price;
     private String payment_status;
-    private Long damageMasterId;
-    private List<EligibleStudent> eligibleStudents;
+    private DamageMasterDto damageMaster;
+
 }

@@ -8,4 +8,8 @@ public interface DamageService {
     ResponseDto addDamageMaster(DamageMasterDto damageMasterDto);
 
     ResponseDto addDamageCase(DamageCaseDto damageCaseDto);
+
+    ResponseDto getAllDamageMaster();
+
+    ResponseDto getAllDamageCase();
 }

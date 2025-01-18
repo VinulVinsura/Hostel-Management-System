@@ -1,9 +1,9 @@
 package com.example.hostelmanagementsystem.controller.admin;
 
 import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
-import com.example.hostelmanagementsystem.dto.UserDto;
+import com.example.hostelmanagementsystem.dto.EligibleStudentDto;
 import com.example.hostelmanagementsystem.service.ProspectiveStudentService;
-import com.example.hostelmanagementsystem.service.UserManageService;
+import com.example.hostelmanagementsystem.service.EligibleStudentManageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +19,14 @@ import org.springframework.web.bind.annotation.*;
 public class UserManagementController {
 
     @Autowired
-    private  UserManageService userManageService;
+    private EligibleStudentManageService eligibleStudentManageService;
     private final ProspectiveStudentService prospectiveStudentService;
 
     @PostMapping("/save-user")
-    public ResponseEntity<ResponseDto> saveUser(@RequestBody UserDto userDto){
+    public ResponseEntity<ResponseDto> saveUser(@RequestBody EligibleStudentDto eligibleStudentDto){
         try {
-            return ResponseEntity.ok(userManageService.saveUser(userDto));
+            log.info("done");
+            return ResponseEntity.ok(eligibleStudentManageService.saveUser(eligibleStudentDto));
         }catch (UnexpectedRollbackException ex){
             log.error("Error");
             return ResponseEntity.ok(new ResponseDto(02,ex.getMessage()));
@@ -35,7 +36,7 @@ public class UserManagementController {
     // (/api/user/get-all-eligible-student)
     @GetMapping("/get-all-eligible-student")
     public ResponseEntity<ResponseDto> getEligibleStudents(){
-        return ResponseEntity.ok(userManageService.getEligibleStudents());
+        return ResponseEntity.ok(eligibleStudentManageService.getEligibleStudents());
     }
 
     @GetMapping("/get-all-prospective-student")
