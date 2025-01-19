@@ -16,6 +16,7 @@ public class DamageCaseDto {
     private Long hostelId;
     private Double penalty_price;
     private String payment_status;
+    private String studentId;
     private Long damageMasterId;
-    private List<EligibleStudent> eligibleStudents;
+//    private List<EligibleStudent> eligibleStudents;
 }
