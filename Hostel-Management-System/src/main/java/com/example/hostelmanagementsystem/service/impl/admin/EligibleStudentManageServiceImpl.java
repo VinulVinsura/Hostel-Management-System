@@ -64,7 +64,6 @@ public class EligibleStudentManageServiceImpl implements EligibleStudentManageSe
                     .facultyName(eligibleStudentDto.getFacultyName())
                     .annualSalary(eligibleStudentDto.getAnnualSalary())
                     .hostel_detail(HostelDetail.builder().id(eligibleStudentDto.getHostel_id()).build())
-                    .damageCases(null)
                     .build();
             EligibleStudent saveEligibleStudent = eligibleStudentRepo.save(eligibleStudent);
             return new ResponseDto(00, saveEligibleStudent);
