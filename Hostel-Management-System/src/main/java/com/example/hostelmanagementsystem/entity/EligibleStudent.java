@@ -58,18 +58,18 @@ public class EligibleStudent {
     @JoinColumn(name = "hostel_detail" )
     private HostelDetail hostel_detail;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "Student_has_Damage_Case",
-            joinColumns = {
-                    @JoinColumn(name = "student_id", referencedColumnName = "id")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "damage_case_id", referencedColumnName = "id")
-            }
-    )
-    @JsonManagedReference
-    @Column(nullable = true)
-    private List<DamageCase> damageCases;
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinTable(name = "Student_has_Damage_Case",
+//            joinColumns = {
+//                    @JoinColumn(name = "student_id", referencedColumnName = "id")
+//            },
+//            inverseJoinColumns = {
+//                    @JoinColumn(name = "damage_case_id", referencedColumnName = "id")
+//            }
+//    )
+//    @JsonManagedReference
+//    @Column(nullable = true)
+//    private List<DamageCase> damageCases;
 
 
 }

@@ -22,13 +22,14 @@ public class DamageCase {
     private Long hostelId;
     private Double penalty_price;
     private String payment_status;
+    private String StudentId;
 
     @ManyToOne
     @JoinColumn(name = "damageMaster")
     private DamageMaster damageMaster;
-
-    @ManyToMany(mappedBy = "damageCases",fetch = FetchType.LAZY)
-    @JsonBackReference
-    private List<EligibleStudent> eligibleStudents;
+//
+//    @ManyToMany(mappedBy = "damageCases",fetch = FetchType.LAZY)
+//    @JsonBackReference
+//    private List<EligibleStudent> eligibleStudents;
 
 }
