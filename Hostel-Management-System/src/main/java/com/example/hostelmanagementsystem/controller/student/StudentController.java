@@ -29,6 +29,7 @@ public class StudentController {
 
     @PostMapping("/login")
     public ResponseEntity<ResponseDto> login(@RequestBody LoginDto loginDto){
+        log.info(loginDto.getEmail());
         return ResponseEntity.ok(studentService.login(loginDto));
     }
 
