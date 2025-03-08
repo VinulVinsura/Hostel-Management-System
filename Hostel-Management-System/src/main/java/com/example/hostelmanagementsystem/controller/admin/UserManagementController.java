@@ -7,9 +7,12 @@ import com.example.hostelmanagementsystem.service.EligibleStudentManageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/user")
@@ -41,6 +44,20 @@ public class UserManagementController {
 
     @GetMapping("/get-all-prospective-student")
     public ResponseEntity<ResponseDto> getAllProspectiveStudent(){
-        return ResponseEntity.ok(prospectiveStudentService.getAllProspectiveStudent());
+        return ResponseEntity.status(HttpStatus.OK).body(prospectiveStudentService.getAllProspectiveStudent());
+    }
+
+    @GetMapping("/get-all-bySalaryOrDistanceOrGender")
+    public ResponseEntity<ResponseDto> getAllProspectiveStudentBySalaryOrDistanceOrGender(
+            @RequestParam(required = false) BigDecimal salary,
+            @RequestParam(required = false) BigDecimal distance,
+            @RequestParam(required = false) String gender
+    ){
+
+        System.err.println("-----------------------");
+//        log.info(salary.toString() +" "+ distance +" "+gender);
+        return ResponseEntity.status(HttpStatus.OK).body(prospectiveStudentService.getAllProspectiveBySalaryOrDistanceOrGender(
+                salary,distance,gender
+        ));
     }
 }

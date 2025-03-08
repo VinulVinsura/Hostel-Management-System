@@ -3,6 +3,7 @@ package com.example.hostelmanagementsystem.service.impl.student;
 import com.example.hostelmanagementsystem.dto.LoginDto;
 import com.example.hostelmanagementsystem.dto.ProspectiveStudentDto;
 import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
+import com.example.hostelmanagementsystem.dto.RoleDto;
 import com.example.hostelmanagementsystem.entity.ProspectiveStudent;
 import com.example.hostelmanagementsystem.repository.ProspectiveStudentRepo;
 import com.example.hostelmanagementsystem.service.ProspectiveStudentService;
@@ -16,6 +17,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -78,7 +80,7 @@ public class ProspectiveStudentServiceImpl implements ProspectiveStudentService 
     @Override
     public ResponseDto getAllProspectiveStudent() {
         try {
-            List<ProspectiveStudent> prospectiveStudentList = prospectiveStudentRepo.findAll();
+            List<ProspectiveStudent> prospectiveStudentList = prospectiveStudentRepo.findAllByUserRole(RoleDto.Student);
             if(prospectiveStudentList.isEmpty()){
                 return new ResponseDto(01,"Prospective Student Is Empty");
             }
@@ -129,5 +131,25 @@ public class ProspectiveStudentServiceImpl implements ProspectiveStudentService 
             return new ResponseDto(02,ex.getMessage());
         }
 
+    }
+
+    @Override
+    public ResponseDto getAllProspectiveBySalaryOrDistanceOrGender(BigDecimal salary, BigDecimal distance, String gender) {
+        try {
+            List<ProspectiveStudent> prospectiveStudentList = prospectiveStudentRepo.findAllBySalaryOrDistanceOrGender(
+                    salary != null ? salary : null,
+                    distance != null ? distance : null,
+                    gender
+            );
+
+            List<ProspectiveStudentDto> list=modelMapper.map(prospectiveStudentList,
+                    new TypeToken<List<ProspectiveStudentDto>>(){}.getType());
+            return new ResponseDto(00,list);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseDto(02,e.getMessage());
+        }
     }
 }

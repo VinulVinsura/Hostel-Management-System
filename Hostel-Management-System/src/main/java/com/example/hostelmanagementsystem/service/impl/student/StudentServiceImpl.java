@@ -23,7 +23,7 @@ public class StudentServiceImpl implements StudentService {
         if (student.isEmpty()){
             return new ResponseDto(01,"Invalid Credential");
         }else {
-            return new ResponseDto(0,student);
+            return new ResponseDto(0,"Student Login Successfully");
         }
 
     }

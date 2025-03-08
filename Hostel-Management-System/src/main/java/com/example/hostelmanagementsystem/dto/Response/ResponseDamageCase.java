@@ -13,6 +13,7 @@ public class ResponseDamageCase {
     private Long hostelId;
     private Double penalty_price;
     private String payment_status;
+    private String studentId;
     private DamageMasterDto damageMaster;
 
 }
