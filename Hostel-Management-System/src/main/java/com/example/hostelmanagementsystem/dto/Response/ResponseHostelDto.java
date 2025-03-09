@@ -20,6 +20,6 @@ public class ResponseHostelDto {
     private int total_capacity;
     private int filled_capacity;
     private int available_capacity;
-    private List<EligibleStudentDto> eligibleStudents;
+//    private List<EligibleStudentDto> eligibleStudents;
     private List<RoomDto> rooms;
 }

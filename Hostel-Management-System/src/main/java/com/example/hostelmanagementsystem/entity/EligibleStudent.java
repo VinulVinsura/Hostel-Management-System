@@ -54,6 +54,7 @@ public class EligibleStudent {
     private String facultyName;
     private Integer annualSalary;
     private String enrollDate;
+    private String roomId;
     @ManyToOne
     @JoinColumn(name = "hostel_detail" )
     private HostelDetail hostel_detail;

@@ -8,4 +8,6 @@ public interface EligibleStudentManageService {
     ResponseDto saveUser(EligibleStudentDto eligibleStudentDto);
     ResponseDto getEligibleStudents();
     ResponseDto getEligibleStudentByEmail(String email);
+
+    ResponseDto getEligibleStudentsByRoomId(String roomId);
 }

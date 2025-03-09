@@ -42,6 +42,11 @@ public class UserManagementController {
         return ResponseEntity.ok(eligibleStudentManageService.getEligibleStudents());
     }
 
+    @GetMapping("/get-eligible-student-by-roomId/{roomId}")
+    public ResponseEntity<ResponseDto> getEligibleStudentByRoomId(@PathVariable String roomId){
+        return ResponseEntity.status(HttpStatus.OK).body(eligibleStudentManageService.getEligibleStudentsByRoomId(roomId));
+    }
+
     @GetMapping("/get-all-prospective-student")
     public ResponseEntity<ResponseDto> getAllProspectiveStudent(){
         return ResponseEntity.status(HttpStatus.OK).body(prospectiveStudentService.getAllProspectiveStudent());

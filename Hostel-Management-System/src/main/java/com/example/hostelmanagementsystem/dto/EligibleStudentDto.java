@@ -38,6 +38,7 @@ public class EligibleStudentDto {
     private String guardianContactNumber;;
     private String facultyName;
     private Integer annualSalary;
+    private String roomId;
 
     private String enrollDate;
     private Long hostel_id;

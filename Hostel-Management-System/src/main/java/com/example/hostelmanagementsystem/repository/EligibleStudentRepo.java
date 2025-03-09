@@ -11,5 +11,7 @@ public interface EligibleStudentRepo extends JpaRepository<EligibleStudent,Long>
 
     Optional<EligibleStudent> findByEmail(String email);
 
+    Optional<EligibleStudent> findByRoomId(String roomId);
+
 
 }

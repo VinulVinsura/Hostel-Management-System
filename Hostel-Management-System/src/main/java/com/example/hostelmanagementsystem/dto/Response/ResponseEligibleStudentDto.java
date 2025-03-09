@@ -54,5 +54,6 @@ public class ResponseEligibleStudentDto {
     private String facultyName;
     private Integer annualSalary;
     private String enrollDate;
+    private String roomId;
     private HostelDetailDto hostel_detail;
 }

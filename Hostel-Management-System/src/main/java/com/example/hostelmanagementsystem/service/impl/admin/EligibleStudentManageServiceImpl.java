@@ -63,6 +63,7 @@ public class EligibleStudentManageServiceImpl implements EligibleStudentManageSe
                     .enrollDate(eligibleStudentDto.getEnrollDate())
                     .facultyName(eligibleStudentDto.getFacultyName())
                     .annualSalary(eligibleStudentDto.getAnnualSalary())
+                    .roomId(eligibleStudentDto.getRoomId())
                     .hostel_detail(HostelDetail.builder().id(eligibleStudentDto.getHostel_id()).build())
                     .build();
             EligibleStudent saveEligibleStudent = eligibleStudentRepo.save(eligibleStudent);
@@ -100,5 +101,20 @@ public class EligibleStudentManageServiceImpl implements EligibleStudentManageSe
         }catch (Exception ex){
             return new ResponseDto(02,ex.getMessage());
         }
+    }
+
+    @Override
+    public ResponseDto getEligibleStudentsByRoomId(String roomId) {
+        try {
+            Optional<EligibleStudent> student = eligibleStudentRepo.findByRoomId(roomId);
+            if(student.isEmpty()){
+                return new ResponseDto(02,"Student not in this Room");
+            }
+            return new ResponseDto(00,modelMapper.map(student, ResponseEligibleStudentDto.class));
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseDto(02,e.getMessage());
+        }
+
     }
 }
