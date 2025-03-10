@@ -65,4 +65,10 @@ public class UserManagementController {
                 salary,distance,gender
         ));
     }
+
+    @DeleteMapping("/delete-eligible-student/{id}")
+    public ResponseEntity<ResponseDto> deleteEligibleStudent(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(eligibleStudentManageService.delete(id));
+    }
+
 }

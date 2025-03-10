@@ -12,4 +12,6 @@ public interface RoomManageService {
     ResponseDto updateRoom(Long id, RoomDto roomDto);
 
     ResponseDto getRoomByHostelId(Long hostelId);
+
+    ResponseDto deleteRoom(Long id);
 }

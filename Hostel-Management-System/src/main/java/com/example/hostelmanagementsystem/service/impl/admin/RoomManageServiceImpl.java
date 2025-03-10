@@ -108,4 +108,21 @@ public class RoomManageServiceImpl implements RoomManageService {
             return  new ResponseDto(02,e.getMessage());
         }
     }
+
+    @Override
+    public ResponseDto deleteRoom(Long id) {
+
+        try {
+            Optional<Room> room = roomManageRepo.findById(id);
+            if(room.isEmpty()){
+                return new ResponseDto(01,"Not exits this room");
+            }
+            roomManageRepo.delete(room.get());
+            return new ResponseDto(00,"Delete success");
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseDto(02,e.getMessage());
+        }
+    }
 }

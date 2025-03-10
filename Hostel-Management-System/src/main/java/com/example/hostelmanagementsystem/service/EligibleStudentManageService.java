@@ -10,4 +10,6 @@ public interface EligibleStudentManageService {
     ResponseDto getEligibleStudentByEmail(String email);
 
     ResponseDto getEligibleStudentsByRoomId(String roomId);
+
+    ResponseDto delete(Long id);
 }

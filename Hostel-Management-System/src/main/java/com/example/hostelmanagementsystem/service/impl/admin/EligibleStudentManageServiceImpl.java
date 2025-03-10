@@ -117,4 +117,20 @@ public class EligibleStudentManageServiceImpl implements EligibleStudentManageSe
         }
 
     }
+
+    @Override
+    public ResponseDto delete(Long id) {
+        try {
+            Optional<EligibleStudent> byId = eligibleStudentRepo.findById(id);
+            if(byId.isEmpty()){
+                return new ResponseDto(01,"This student not here");
+            }
+            eligibleStudentRepo.delete(byId.get());
+            return new ResponseDto(00,"Student Delete Done");
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseDto(02,e.getMessage());
+        }
+
+    }
 }

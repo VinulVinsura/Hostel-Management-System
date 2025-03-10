@@ -5,6 +5,7 @@ import com.example.hostelmanagementsystem.dto.RoomDto;
 import com.example.hostelmanagementsystem.service.RoomManageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,5 +43,10 @@ public class RoomManageController {
     public ResponseEntity<ResponseDto> updateRoom(@PathVariable Long id,
                                                   @RequestBody RoomDto roomDto){
         return ResponseEntity.ok(manageService.updateRoom(id,roomDto));
+    }
+
+    @DeleteMapping("/delete-room/{id}")
+    public ResponseEntity<ResponseDto> deleteRoom(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(manageService.deleteRoom(id));
     }
 }
