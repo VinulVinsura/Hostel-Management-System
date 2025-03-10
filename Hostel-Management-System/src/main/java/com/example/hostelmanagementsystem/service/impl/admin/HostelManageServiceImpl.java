@@ -78,7 +78,7 @@ public class HostelManageServiceImpl implements HostelManageService {
             }
             Room room = roomManageRepo.findByRoomId(commonUpdateDto.getRoomId());
             room.setFilled_capacity(room.getFilled_capacity()+commonUpdateDto.getUpd_room_filled_capacity());
-            System.err.println("============================");
+
             roomManageRepo.save(room);
             return new ResponseDto(00,"success");
 
