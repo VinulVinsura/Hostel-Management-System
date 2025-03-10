@@ -10,4 +10,6 @@ public interface RoomManageService {
     ResponseDto getRoomByRoomId(String roomId);
 
     ResponseDto updateRoom(Long id, RoomDto roomDto);
+
+    ResponseDto getRoomByHostelId(Long hostelId);
 }

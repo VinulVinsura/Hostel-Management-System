@@ -28,11 +28,13 @@ public interface ProspectiveStudentRepo extends JpaRepository<ProspectiveStudent
         @Query("SELECT p FROM ProspectiveStudent p WHERE " +
                 "(:salary IS NULL OR p.annualSalary < :salary) AND " +
                 "(:distance IS NULL OR p.distanceToHome > :distance) AND " +
-                "(:gender IS NULL OR p.gender = :gender)")
+                "(:gender IS NULL OR p.gender = :gender) AND" +
+                "(:userRole IS NULL OR p.userRole = :userRole)")
         List<ProspectiveStudent> findAllBySalaryOrDistanceOrGender(
                 @Param("salary") BigDecimal salary,
                 @Param("distance") BigDecimal distance,
-                @Param("gender") String gender);
+                @Param("gender") String gender,
+                @Param("userRole") RoleDto userRole);
 
 
 

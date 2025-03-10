@@ -25,7 +25,7 @@ public class RoomManageServiceImpl implements RoomManageService {
     public ResponseDto addRoom(RoomDto roomDto) {
         try {
             if (roomManageRepo.existsByRoomId(roomDto.getRoomId())){
-                return new ResponseDto(00,roomDto.getRoomId()+" already exists..");
+                return new ResponseDto(03 ,roomDto.getRoomId()+" already exists..");
             }else {
                 Room room=Room.builder()
                         .roomId(roomDto.getRoomId())
@@ -88,6 +88,24 @@ public class RoomManageServiceImpl implements RoomManageService {
 
         }catch (Exception ex){
             return new ResponseDto(02,ex.getMessage());
+        }
+    }
+
+    @Override
+    public ResponseDto getRoomByHostelId(Long hostelId) {
+
+        try {
+            List<Room> byHostelDetailId = roomManageRepo.findByHostelDetail_Id(hostelId);
+            if (byHostelDetailId.isEmpty()){
+                return new ResponseDto(03,"Hostel Haven't Room");
+
+            }
+
+            return new ResponseDto(00,modelMapper.map(byHostelDetailId, new TypeToken<List<ResponseRoomDto>>(){}.getType()));
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return  new ResponseDto(02,e.getMessage());
         }
     }
 }

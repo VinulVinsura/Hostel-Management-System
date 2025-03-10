@@ -1,5 +1,6 @@
 package com.example.hostelmanagementsystem.service;
 
+import com.example.hostelmanagementsystem.dto.HostelCommonUpdateDto;
 import com.example.hostelmanagementsystem.dto.HostelDetailDto;
 import com.example.hostelmanagementsystem.dto.Response.ResponseDto;
 import com.example.hostelmanagementsystem.dto.Response.ResponseHostelDto;
@@ -7,4 +8,6 @@ import com.example.hostelmanagementsystem.dto.Response.ResponseHostelDto;
 public interface HostelManageService {
     ResponseDto addHostel(HostelDetailDto hostelDetailDto);
     ResponseDto getAllHostel();
+
+    ResponseDto updateHostelCapacity(Long id , HostelCommonUpdateDto commonUpdateDto);
 }

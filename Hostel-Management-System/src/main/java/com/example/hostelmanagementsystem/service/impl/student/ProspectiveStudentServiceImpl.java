@@ -139,7 +139,8 @@ public class ProspectiveStudentServiceImpl implements ProspectiveStudentService 
             List<ProspectiveStudent> prospectiveStudentList = prospectiveStudentRepo.findAllBySalaryOrDistanceOrGender(
                     salary != null ? salary : null,
                     distance != null ? distance : null,
-                    gender
+                    gender,
+                    RoleDto.Student
             );
 
             List<ProspectiveStudentDto> list=modelMapper.map(prospectiveStudentList,
