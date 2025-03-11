@@ -13,4 +13,6 @@ public interface ProspectiveStudentService {
     ResponseDto getStudentById(Long id);
 
     ResponseDto getAllProspectiveBySalaryOrDistanceOrGender(BigDecimal salary, BigDecimal distance, String gender);
+
+    ResponseDto updateStatus(String id, String status);
 }

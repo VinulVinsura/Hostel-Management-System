@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 public class UserManagementController {
 
     @Autowired
-    private EligibleStudentManageService eligibleStudentManageService;
+    private  EligibleStudentManageService eligibleStudentManageService;
     private final ProspectiveStudentService prospectiveStudentService;
 
     @PostMapping("/save-user")
@@ -34,6 +34,12 @@ public class UserManagementController {
             log.error("Error");
             return ResponseEntity.ok(new ResponseDto(02,ex.getMessage()));
         }
+    }
+    @PutMapping("/update-status/")
+    public ResponseEntity<ResponseDto> updateStudentStatus(@RequestParam(required = false) String studentId,
+                                                           @RequestParam(required = false) String status){
+        System.err.println("-----------------------------------------");
+        return ResponseEntity.status(HttpStatus.OK).body(prospectiveStudentService.updateStatus(studentId,status));
     }
 
     // (/api/user/get-all-eligible-student)

@@ -16,6 +16,8 @@ public interface ProspectiveStudentRepo extends JpaRepository<ProspectiveStudent
 
     ProspectiveStudent findByEmail(String email);
 
+    Optional<ProspectiveStudent>  findByStudentId(String studentId);
+
 
     List<ProspectiveStudent> findAllByUserRole(RoleDto role);
 

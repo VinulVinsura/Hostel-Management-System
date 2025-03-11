@@ -42,7 +42,7 @@ public class EligibleStudentManageServiceImpl implements EligibleStudentManageSe
                     .lastName(eligibleStudentDto.getLastName())
                     .nameWithInitials(eligibleStudentDto.getNameWithInitials())
                     .nationalId(eligibleStudentDto.getNationalId())
-                    .gender(eligibleStudentDto.getGender())
+                    .gender(eligibleStudentDto.getGender().toLowerCase())
                     .email(eligibleStudentDto.getEmail())
                     .password(eligibleStudentDto.getPassword())
                     .studentId(eligibleStudentDto.getStudentId())

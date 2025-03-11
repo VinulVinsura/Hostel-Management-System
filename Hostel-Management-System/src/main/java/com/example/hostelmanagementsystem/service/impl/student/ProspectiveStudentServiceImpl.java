@@ -40,7 +40,7 @@ public class ProspectiveStudentServiceImpl implements ProspectiveStudentService 
                     .lastName(dto.getLastName())
                     .nameWithInitials(dto.getNameWithInitials())
                     .nationalId(dto.getNationalId())
-                    .gender(dto.getGender())
+                    .gender(dto.getGender().toLowerCase())
                     .email(dto.getEmail())
                     .password(passwordEncoder.encode(dto.getPassword()))
                     .userRole(dto.getUserRole())
@@ -59,7 +59,7 @@ public class ProspectiveStudentServiceImpl implements ProspectiveStudentService 
                     .numberOfSiblingsEdu(dto.getNumberOfSiblingsEdu())
                     .nameOfGuardian(dto.getNameOfGuardian())
                     .guardianContactNumber(dto.getGuardianContactNumber())
-                    .status(dto.getStatus())
+                    .status(dto.getStatus().toLowerCase())
                     .facultyName(dto.getFacultyName())
                     .annualSalary(dto.getAnnualSalary()).build();
             ProspectiveStudent p_student = prospectiveStudentRepo.save(prospectiveStudent);
@@ -148,6 +148,25 @@ public class ProspectiveStudentServiceImpl implements ProspectiveStudentService 
             return new ResponseDto(00,list);
 
 
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseDto(02,e.getMessage());
+        }
+    }
+
+    @Override
+    public ResponseDto updateStatus(String  studentId, String status) {
+        try {
+            Optional<ProspectiveStudent> prospectiveStudent = prospectiveStudentRepo.findByStudentId(studentId);
+            if(prospectiveStudent.isEmpty()){
+                return new ResponseDto(01,"Student not exists..");
+            }
+            prospectiveStudent.get().setStatus(status);
+            ProspectiveStudent save = prospectiveStudentRepo.save(prospectiveStudent.get());
+            if(save!=null){
+                return new ResponseDto(00,"student updated");
+            }
+            return new ResponseDto(03,"Error");
         }catch (Exception e){
             e.printStackTrace();
             return new ResponseDto(02,e.getMessage());
